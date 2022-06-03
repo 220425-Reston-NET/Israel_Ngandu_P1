@@ -1,4 +1,4 @@
-namespace SStoreprojectModel
+namespace StoreprojectModel
 {
     public class Products
     {

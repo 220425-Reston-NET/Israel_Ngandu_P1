@@ -27,8 +27,6 @@ namespace StoreBL
             joinTable.storeID = p_storeID;
             joinTable.Quantity = p_Quantity;
 
-            //Logic to check if the pokemon even exist
-
             _inventoryRepo.Update(joinTable);
         }
     }

@@ -31,6 +31,7 @@ namespace StoreprojectModel
         public string storeAddress { get; set; }
 
         public List<Products> Products { get; set; }
+        public List<CustomerOrders> CustomerOrders { get; set;}
 
         public Storefront()
         {
@@ -38,6 +39,8 @@ namespace StoreprojectModel
             storeName = "Walmart";
             storeAddress = "1234 farway";
             Products = new List<Products>();
+            CustomerOrders = new List<CustomerOrders>();
+            
         }
 
         public override string ToString()

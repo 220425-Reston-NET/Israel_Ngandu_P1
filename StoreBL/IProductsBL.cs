@@ -1,4 +1,4 @@
-using SStoreprojectModel;
+using StoreprojectModel;
 
 
 namespace ProductsBL

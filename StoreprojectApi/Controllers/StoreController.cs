@@ -2,6 +2,7 @@ using System.Security.Cryptography.X509Certificates;
 using InventoryBL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using OrdersBL;
 using SStoreprojectModel;
 using StoreBL;
 using StorefrontBL;
@@ -17,10 +18,12 @@ public class StoreController : ControllerBase
     // =============Dependency injection==========
     private IStorefrontBL _storefrontBL;
     private IinventoryBL _inventoryJoin;
-    public StoreController(IStorefrontBL storefrontBL, IinventoryBL inventoryJoin)
+    private OrderslistBL _orderlist;
+    public StoreController(IStorefrontBL storefrontBL, IinventoryBL inventoryJoin, OrderslistBL orderlist)
     {
         _storefrontBL = storefrontBL;
         _inventoryJoin = inventoryJoin;
+         _orderlist = orderlist;
     }
     // ===========================================
 
@@ -102,6 +105,33 @@ public class StoreController : ControllerBase
         {
             return NotFound("No Store was found or exists.");
         }
+    }
+    [HttpGet("GetAllOrders")]
+    public IActionResult GetAllOrders()
+    {
+        try
+        {
+            List<CustomerOrders> listofCurrentOrders = _orderlist.GetAllCustomerOrders();
+            return Ok(listofCurrentOrders);
+        }
+        catch (SqlException)
+        {
+            return NotFound("No Store was found or exists.");
+        }
+    }
+    [HttpPost("AddProductsToOrders")]
+    public IActionResult AddProductsToOrders([FromBody] Orders o_orders)
+    {
+        try
+        {
+            _orderlist.AddProductsToOrders(o_orders);
+            return Created("Customer was added!", o_orders);
+        }
+        catch (SqlException)
+        {
+            return Conflict();
+        }
+
     }
    
 }

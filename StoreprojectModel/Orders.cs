@@ -1,4 +1,4 @@
-namespace SStoreprojectModel
+namespace StoreprojectModel
 {
     public class Orders
     {
@@ -24,9 +24,11 @@ namespace SStoreprojectModel
 
         public int totalPrice { get; set; }
 
+        public int customerID { get; set; }
+
         public override string ToString()
         {
-            return $"=======\nID: {orderID}\nstoreLocations: {storeLocations}\ntotalPrice: {totalPrice}\n=======";
+            return $"=======\nID: {orderID}\nstoreLocations: {storeLocations}\ntotalPrice: {totalPrice}\ncustomerID: {customerID}=======";
         }
     }
 }

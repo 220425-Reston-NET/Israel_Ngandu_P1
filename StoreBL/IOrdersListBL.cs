@@ -1,10 +1,10 @@
-using SStoreprojectModel;
+using StoreprojectModel;
 
 namespace OrdersBL
 {
     public interface IOrdersListBL
     {
-            void AddOrdersToOrderlist(Orders p_order);
+            void AddProductsToOrders(Orders p_order);
             List<Orders> GetAllOrdersList();
             Task<List<Orders>> GetAllOrdersAsync();
     }

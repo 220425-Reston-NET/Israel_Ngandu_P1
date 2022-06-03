@@ -88,6 +88,41 @@ namespace StoreDL
 
         }
 
+        private List<Orders> GiveOrdersToCustomers(int orderID)
+        {
+            string SQLquery = @"select a.orderID, a.storeLocations, a.totalPrice, a.customerID from Orders p
+                        inner join orders_products pa on p.customerID = pa.customerID
+                        inner join Orders a on a.orderID = pa.orderID
+                        where p.orderID = @orderID";
+
+            List<Orders> listOfOrders = new List<Orders>();
+
+            using (SqlConnection con = new SqlConnection(_connectionString))
+            {
+                con.Open();
+
+                SqlCommand command = new SqlCommand(SQLquery, con);
+
+                command.Parameters.AddWithValue("@orderID", orderID);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    listOfOrders.Add(new Orders()
+                    {
+                        orderID = reader.GetInt32(0),
+                        storeLocations = reader.GetString(1),
+                        totalPrice = reader.GetInt32(2),
+                        customerID = reader.GetInt32(3),
+                    });
+                }
+            }
+
+            return listOfOrders;
+        }
+
+
         public void Update(Customer p_resource)
         {
             throw new NotImplementedException();

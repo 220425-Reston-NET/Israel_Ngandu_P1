@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using OrdersBL;
+using SStoreprojectModel;
 using StoreBL;
 using StoreprojectModel;
 
@@ -11,9 +13,11 @@ namespace StoreprojectApi.Controllers;
 public class CustomerController : ControllerBase{
     // =============Dependency injection==========
     private IStoreBL _storeBL;
-    public CustomerController(IStoreBL p_storeBL)
+    private OrderslistBL _orderlist;
+    public CustomerController(IStoreBL p_storeBL, OrderslistBL p_orderlist)
     {
         _storeBL = p_storeBL;
+        _orderlist = p_orderlist;
         }
 
     // ===========================================
@@ -64,6 +68,33 @@ public class CustomerController : ControllerBase{
         try
         {
             return Ok(_storeBL.SearchCustomerByPhone(customerPhone));
+        }
+        catch (SqlException)
+        {
+            return Conflict();
+        }
+
+    }
+    [HttpGet("GetAllOrders")]
+    public IActionResult GetAllOrders()
+    {
+        try
+        {
+            List<CustomerOrders> listofCurrentOrders = _orderlist.GetAllCustomerOrders();
+            return Ok(listofCurrentOrders);
+        }
+        catch (SqlException)
+        {
+            return NotFound("No Store was found or exists.");
+        }
+    }
+    [HttpPost("AddProductsToOrders")]
+    public IActionResult AddProductsToOrders([FromBody] Orders o_orders)
+    {
+        try
+        {
+            _orderlist.AddProductsToOrders(o_orders);
+            return Created("Customer was added!", o_orders);
         }
         catch (SqlException)
         {

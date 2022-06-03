@@ -26,8 +26,11 @@ builder.Services.AddScoped<IRepository<Storefront>, SQLStoreRepository>(repo => 
 builder.Services.AddScoped<IStorefrontBL, StorelocationBL>();
 builder.Services.AddScoped<IRepository<Inventory>, SQLInventory>(repo => new SQLInventory(Environment.GetEnvironmentVariable("Connection_String")));
 builder.Services.AddScoped<IinventoryBL, InventoryjoinBL>();
+builder.Services.AddScoped<IRepository<Orders>, SQLOrdersRepository>(repo => new SQLOrdersRepository(Environment.GetEnvironmentVariable("Connection_String")));
 builder.Services.AddScoped<IRepository<CustomerOrders>, SQLOrderslistRepository>(repo => new SQLOrderslistRepository(Environment.GetEnvironmentVariable("Connection_String")));
 builder.Services.AddScoped<IOrdersListBL, OrderslistBL>();
+
+
 
 var app = builder.Build();
 

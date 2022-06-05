@@ -64,7 +64,7 @@ namespace StoreDL
                         proId = reader.GetInt32(1),
                         Quantity = reader.GetInt32(2),
                         InventoryID = reader.GetInt32(2),
-                        // GiveProductsToInventroy(reader.GetInt32(0))
+                        
                     });
                 }
 

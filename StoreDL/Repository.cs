@@ -3,7 +3,7 @@ using StoreprojectModel;
 
 namespace StoreDL
 {
-    public class Repository : IRepository<Customer>
+    public class  Repository : IRepository<Customer>
     {
         private static string _filepath = "../StoreDL/Data/Storeproject.json";
 

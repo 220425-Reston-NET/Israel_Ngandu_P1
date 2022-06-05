@@ -6,7 +6,7 @@ namespace StorefrontBL
     {
         Storefront SearchStoreByName(string p_storeName);
 
-        // List<Pokemon> SearchPokemonById(int p_pokeId);
+        
         void AddProductToStore(Storefront p_store);
         List<Storefront> GetAllStorefront();
 

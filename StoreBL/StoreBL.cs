@@ -28,32 +28,11 @@ namespace StoreBL
 
         public Customer SearchCustomerByName(string p_name)
         {
-            // List<Customer> currentListOfCustomer = storeRepo.GetAll();
-            // foreach (Customer customerObj in currentListOfCustomer)
-            // {
-            //     if (customerObj.Name == name)
-            //     {
-            //         return customerObj;
-            //     }
-            // }
-            // // throw new Exception("No customer was found");
-            // return null;
             return storeRepo.GetAll().First(store => store.Name == p_name);
         }
 
         public Customer SearchCustomerByPhone(double p_Phone)
         {
-            // List<Customer> currentListOfCustomer = storeRepo.GetAll();
-            // foreach (Customer customerObj in currentListOfCustomer)
-            // {
-            //     if (customerObj.Phone == Phone)
-            //     {
-            //         return customerObj;
-            //     }
-            // }
-            // // throw new Exception("No customer was found");
-            // return null;
-            // // throw new NotImplementedException();
             return storeRepo.GetAll().First(store => store.Phone == p_Phone);
         }
 

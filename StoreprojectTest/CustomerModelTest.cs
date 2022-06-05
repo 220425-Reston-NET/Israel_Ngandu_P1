@@ -40,8 +40,8 @@ public class CustomerModelTest
         );
 
     }
-  
-        [Fact]
+
+    [Fact]
     public void Phone_Should_contain_digits()
     {
         // Arrange
@@ -81,7 +81,7 @@ public class CustomerModelTest
     {
         // Arrange
         Customer CustomerObj = new Customer();
-        string Name = " ";
+        string Name =  "Joshua Sakala";
 
         // Act
         CustomerObj.Name = Name;

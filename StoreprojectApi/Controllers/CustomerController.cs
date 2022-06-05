@@ -1,9 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using OrdersBL;
-using SStoreprojectModel;
-using StoreBL;
 using StoreprojectModel;
+using StoreBL;
 
 
 namespace StoreprojectApi.Controllers;

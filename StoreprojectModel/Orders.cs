@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace StoreprojectModel
 {
     public class Orders
@@ -15,7 +17,7 @@ namespace StoreprojectModel
                 }
                 else
                 {
-                    Console.WriteLine("orderID cannot be negative");
+                    throw new ValidationException("orderID cannot be negative");
                 }
             }
         }

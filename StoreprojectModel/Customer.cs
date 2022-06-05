@@ -18,7 +18,7 @@ namespace StoreprojectModel
                 }
                 else
                 {
-                     new ValidationException("customerID needs to be above 0.");
+                    throw new ArgumentException("customerID needs to be above 0.");
 
                 }
             }
@@ -31,13 +31,13 @@ namespace StoreprojectModel
             {
 
                 if (Regex.IsMatch(value, @"^[a-zA-Z]+$"))
-
                 {
                     _name = value;
                 }
                 else
                 {
-                     new ValidationException("Can only have letters");
+                    var regexobj = new Regex(@"\[[A-Z]+\]");
+                    throw new ArgumentException("Can only have letters");
                 }
             }
         }
@@ -57,7 +57,7 @@ namespace StoreprojectModel
                 }
                 else
                 {
-                    new ValidationException("Phone should have 10 Numbers");
+                    throw new ArgumentException("Phone should have 10 Numbers");
                 }
             }
         }

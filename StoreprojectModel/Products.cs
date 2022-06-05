@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace StoreprojectModel
 {
     public class Products
@@ -18,7 +20,7 @@ namespace StoreprojectModel
                 }
                 else
                 {
-                    Console.WriteLine("Quantity cannot be negative");
+                    throw new ValidationException("Quantity cannot be negative");
                 }
             }
         }

@@ -60,6 +60,7 @@ public class CustomerModelTest
     [InlineData(123)]
     [InlineData(1627)]
     [InlineData(123445)]
+    [InlineData(0)]
     public void Phone_should_Fail_Set_InvalidData(double p_phone)
     {
 
@@ -81,18 +82,21 @@ public class CustomerModelTest
     {
         // Arrange
         Customer CustomerObj = new Customer();
-        string Name =  "Joshua Sakala";
+        string _name =  "Joshua";
 
         // Act
-        CustomerObj.Name = Name;
+        CustomerObj.Name = _name;
 
         // Assert
         Assert.NotNull(CustomerObj.Name);
-        Assert.Equal(Name, CustomerObj.Name);
+        Assert.Equal(_name, CustomerObj.Name);
     }
 
     [Theory]
     [InlineData("123")]
+    [InlineData("!@#$")]
+    [InlineData("%^&*")]
+    [InlineData("-20=4+")]
     public void Name_should_Fail_Set_InvalidData(string n_name)
     {
 

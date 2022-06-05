@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
-using SStoreprojectModel;
+using StoreprojectModel;
 
 namespace StoreprojectModel
 {
@@ -18,7 +18,7 @@ namespace StoreprojectModel
                 }
                 else
                 {
-                    throw new ArgumentException("customerID needs to be above 0.");
+                    throw new ValidationException("customerID needs to be above 0.");
 
                 }
             }
@@ -36,8 +36,7 @@ namespace StoreprojectModel
                 }
                 else
                 {
-                    var regexobj = new Regex(@"\[[A-Z]+\]");
-                    throw new ArgumentException("Can only have letters");
+                    throw new ValidationException("Can only have letters");
                 }
             }
         }
@@ -57,7 +56,7 @@ namespace StoreprojectModel
                 }
                 else
                 {
-                    throw new ArgumentException("Phone should have 10 Numbers");
+                    throw new ValidationException("Phone should have 10 Numbers");
                 }
             }
         }

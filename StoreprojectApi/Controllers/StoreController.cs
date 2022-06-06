@@ -3,6 +3,7 @@ using InventoryBL;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using OrdersBL;
+using Serilog;
 using SStoreprojectModel;
 using StoreBL;
 using StorefrontBL;
@@ -32,11 +33,13 @@ public class StoreController : ControllerBase
     {
         try
         {
+            Log.Warning("Getting all stores!");
             List<Storefront> listofCurrentStore = await _storefrontBL.GetAllStoreAsync();
             return Ok(listofCurrentStore);
         }
         catch (SqlException)
         {
+            Log.Warning("Stores not fond!");
             return NotFound("No Store was found or exists.");
         }
     }
@@ -45,10 +48,12 @@ public class StoreController : ControllerBase
     {
         try
         {
+            Log.Warning("searching for store by name");
             return Ok(_storefrontBL.SearchStoreByName(StoreName));
         }
         catch (SqlException)
         {
+            Log.Warning("An error response was returned");
             return Conflict();
         }
 
@@ -59,15 +64,17 @@ public class StoreController : ControllerBase
     {
         try
         {
+            Log.Warning("Searching for store by id!");
             return Ok(_storefrontBL.SearchStoreById(storeID));
         }
         catch (SqlException)
         {
+            Log.Warning("Sql exception returened");
             return Conflict();
         }
 
     }
-
+    
     [HttpPut("ReplenishQuantity")]
     public IActionResult ReplenishQuantity([FromBody]Inventory p_inventory )
     {
@@ -75,6 +82,7 @@ public class StoreController : ControllerBase
 
         if (found == null)
         {
+            Log.Warning("store not found!");
             return NotFound("Store was not found!");
         }
         
@@ -82,12 +90,14 @@ public class StoreController : ControllerBase
         {
             try
             {
+                Log.Warning("Replenishing Inventory quantiy!");
                 _inventoryJoin.ReplenishInventoryQuantity(p_inventory.proId, p_inventory.storeID, p_inventory.Quantity, p_inventory.InventoryID);
 
                 return Ok();
             }
             catch (SqlException)
             {
+                Log.Warning("SQL exception returned");
                 return Conflict();
             }
         }
@@ -98,12 +108,14 @@ public class StoreController : ControllerBase
     {
         try
         {
+            Log.Warning("Getting all inventory");
             List<Inventory> listofCurrentInventory = _inventoryJoin.GetAllInventory();
             return Ok(listofCurrentInventory);
         }
         catch (SqlException)
         {
-            return NotFound("No Store was found or exists.");
+            Log.Warning("no inventory found");
+            return NotFound("No inventory found.");
         }
     }
     [HttpGet("GetAllOrders")]
@@ -111,12 +123,14 @@ public class StoreController : ControllerBase
     {
         try
         {
+            Log.Warning("Getting all orders");
             List<CustomerOrders> listofCurrentOrders = _orderlist.GetAllCustomerOrders();
             return Ok(listofCurrentOrders);
         }
         catch (SqlException)
         {
-            return NotFound("No Store was found or exists.");
+            Log.Warning("no orders to return!");
+            return NotFound("No customer orders were found.");
         }
     }
     [HttpPost("AddProductsToOrders")]
@@ -124,11 +138,13 @@ public class StoreController : ControllerBase
     {
         try
         {
+             Log.Warning("Adding product to orders");
             _orderlist.AddProductsToOrders(o_orders);
-            return Created("Customer was added!", o_orders);
+            return Created("Producted was added!", o_orders);
         }
         catch (SqlException)
         {
+            Log.Warning("SQL exception returned");
             return Conflict();
         }
 

@@ -1,6 +1,7 @@
 
 using InventoryBL;
 using OrdersBL;
+using Serilog;
 using SStoreprojectModel;
 using StoreBL;
 using StoreDL;
@@ -8,6 +9,14 @@ using StorefrontBL;
 using StoreprojectModel;
 
 var builder = WebApplication.CreateBuilder(args);
+// initializing my logger
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.File("./logs/user.txt")
+    .CreateLogger();
+var Configuration = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json")
+    .Build();
 
 // Add services to the container.
 

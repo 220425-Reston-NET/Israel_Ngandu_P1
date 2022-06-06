@@ -3,7 +3,7 @@ using Microsoft.Data.SqlClient;
 using OrdersBL;
 using StoreprojectModel;
 using StoreBL;
-
+using Serilog;
 
 namespace StoreprojectApi.Controllers;
 
@@ -20,16 +20,18 @@ public class CustomerController : ControllerBase{
         }
 
     // ===========================================
-
+    
     [HttpGet("GetAllCustomers")]
     public async Task<IActionResult> GetAllCustomers()
     {
         try{
+            Log.Warning("Getting all customer");
         List<Customer> listofCurrentCustomer = await _storeBL.GetAllCustomersAsync();
         return Ok(listofCurrentCustomer);
         }
         catch(SqlException) 
         {
+            Log.Warning("Exception found");
             return NotFound("No Customer was found or exists.");
         }
     }
@@ -39,11 +41,13 @@ public class CustomerController : ControllerBase{
     {
         try
         {
+            Log.Warning("Adding new customer");
             _storeBL.AddCustomer(c_cus);
             return Created("Customer was added!", c_cus);
         }
         catch (SqlException)
         {
+            Log.Warning("Exception found");
             return Conflict();
         }
     
@@ -52,11 +56,13 @@ public class CustomerController : ControllerBase{
     public IActionResult SearchCustomerByName([FromQuery] string customerName)
     {
         try
-        {    
+        {
+            Log.Warning("Search Customer By Name");
             return Ok(_storeBL.SearchCustomerByName(customerName));
         }
         catch (SqlException)
         {
+            Log.Warning("Exception found");
             return Conflict();
         }
 
@@ -66,10 +72,12 @@ public class CustomerController : ControllerBase{
     {
         try
         {
+            Log.Warning("Search Customer By Phone");
             return Ok(_storeBL.SearchCustomerByPhone(customerPhone));
         }
         catch (SqlException)
         {
+            Log.Warning("Exception found");
             return Conflict();
         }
 
@@ -79,11 +87,13 @@ public class CustomerController : ControllerBase{
     {
         try
         {
+            Log.Warning("Get All Orders");
             List<CustomerOrders> listofCurrentOrders = _orderlist.GetAllCustomerOrders();
             return Ok(listofCurrentOrders);
         }
         catch (SqlException)
         {
+            Log.Warning("Exception found");
             return NotFound("No Store was found or exists.");
         }
     }
@@ -92,11 +102,13 @@ public class CustomerController : ControllerBase{
     {
         try
         {
+            Log.Warning("Add Products To Orders");
             _orderlist.AddProductsToOrders(o_orders);
             return Created("Customer was added!", o_orders);
         }
         catch (SqlException)
         {
+            Log.Warning("Exception found");
             return Conflict();
         }
 

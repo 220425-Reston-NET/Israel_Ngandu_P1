@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
-using StoreprojectModel;
 
 namespace StoreprojectModel
 {

@@ -21,7 +21,7 @@ namespace StoreprojectModel
                 }
             }
         }
-        public string storeLocations { get; set; }
+        public string? storeLocations { get; set; }
 
 
         public int totalPrice { get; set; }

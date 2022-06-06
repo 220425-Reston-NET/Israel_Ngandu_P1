@@ -5,7 +5,7 @@ namespace StoreprojectModel
     public class Products
     {
         public int proId { get; set; }
-        public string proName { get; set; }
+        public string? proName { get; set; }
 
        
         private int _Quantity;

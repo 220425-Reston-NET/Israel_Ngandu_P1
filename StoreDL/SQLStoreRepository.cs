@@ -1,6 +1,4 @@
 using Microsoft.Data.SqlClient;
-using SStoreprojectModel;
-using StoreDL;
 using StoreprojectModel;
 
 namespace StoreDL

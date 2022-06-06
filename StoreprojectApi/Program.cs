@@ -9,6 +9,7 @@ using StorefrontBL;
 using StoreprojectModel;
 
 var builder = WebApplication.CreateBuilder(args);
+
 // initializing my logger
 Log.Logger = new LoggerConfiguration()
     .WriteTo.File("./logs/user.txt")

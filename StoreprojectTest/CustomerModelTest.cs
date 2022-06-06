@@ -82,14 +82,14 @@ public class CustomerModelTest
     {
         // Arrange
         Customer CustomerObj = new Customer();
-        string _name =  "Joshua";
+        string Name =  "Joshua";
 
         // Act
-        CustomerObj.Name = _name;
+        CustomerObj.Name = Name;
 
         // Assert
         Assert.NotNull(CustomerObj.Name);
-        Assert.Equal(_name, CustomerObj.Name);
+        Assert.Equal(Name, CustomerObj.Name);
     }
 
     [Theory]

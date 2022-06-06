@@ -12,8 +12,8 @@ namespace StoreprojectApi.Controllers;
 public class CustomerController : ControllerBase{
     // =============Dependency injection==========
     private IStoreBL _storeBL;
-    private OrderslistBL _orderlist;
-    public CustomerController(IStoreBL p_storeBL, OrderslistBL p_orderlist)
+    private IOrdersListBL _orderlist;
+    public CustomerController(IStoreBL p_storeBL, IOrdersListBL p_orderlist)
     {
         _storeBL = p_storeBL;
         _orderlist = p_orderlist;

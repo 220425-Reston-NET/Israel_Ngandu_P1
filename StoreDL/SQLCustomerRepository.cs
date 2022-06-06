@@ -125,7 +125,22 @@ namespace StoreDL
 
         public void Update(Customer p_resource)
         {
-            throw new NotImplementedException();
+                string SQLquery = @"update Customers
+                            set customerName = @customerName, customerAddress = @customerAddress, customerPhone = @customerPhone
+                            where customerID = @customerID";
+
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    con.Open();
+
+                    SqlCommand command = new SqlCommand(SQLquery, con);
+                    command.Parameters.AddWithValue("@customerName", p_resource.Name);
+                    command.Parameters.AddWithValue("@customerAddress", p_resource.Address);
+                    command.Parameters.AddWithValue("@customerPhone", p_resource.Phone);
+                    command.Parameters.AddWithValue("@customerID", p_resource.customerID);
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
     }
-}

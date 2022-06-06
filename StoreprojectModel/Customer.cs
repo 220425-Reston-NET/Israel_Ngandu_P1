@@ -31,7 +31,7 @@ namespace StoreprojectModel
 
                 if (Regex.IsMatch(value, @"^[a-zA-Z]+$"))
                 {
-                    _name = value;
+                    string ? _name = value;
                 }
                 else
                 {

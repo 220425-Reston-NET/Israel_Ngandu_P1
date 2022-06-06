@@ -21,10 +21,7 @@ namespace StoreDL
 
         public List<Customer> GetAll()
         {
-            string jsonString = File.ReadAllText(_filepath);
-            List<Customer> listOfCus = JsonSerializer.Deserialize<List<Customer>>(jsonString);
-
-            return listOfCus;
+            throw new NotImplementedException();
         }
 
         public Task<List<Customer>> GetAllAsync()

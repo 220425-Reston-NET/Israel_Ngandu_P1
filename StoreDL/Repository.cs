@@ -23,10 +23,7 @@ namespace StoreDL
 
         public static List<Customer> GetAllCustomers()
         {
-            string jsonString = File.ReadAllText(_filepath);
-            List<Customer> listofCustomer = JsonSerializer.Deserialize<List<Customer>>(jsonString);
-
-            return listofCustomer;
+            throw new NotImplementedException();
         }
 
         public void Add(Customer p_resource)

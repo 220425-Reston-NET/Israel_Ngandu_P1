@@ -29,7 +29,7 @@ namespace StoreprojectModel
             set
             {
 
-                if (Regex.IsMatch(value, @"^[a-zA-Z]+$"))
+                if (Regex.IsMatch(value, @"^[a-zA-Z ]+$"))
                 {
                      _name = value;
                 }

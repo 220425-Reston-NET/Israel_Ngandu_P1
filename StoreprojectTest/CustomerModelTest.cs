@@ -82,7 +82,7 @@ public class CustomerModelTest
     {
         // Arrange
         Customer CustomerObj = new Customer();
-        string Name =  "Joshua";
+        string Name =  "Joshua Sakala";
 
         // Act
         CustomerObj.Name = Name;

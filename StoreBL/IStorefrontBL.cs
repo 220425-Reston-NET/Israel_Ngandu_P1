@@ -12,5 +12,6 @@ namespace StorefrontBL
 
         Storefront SearchStoreById(int p_storeID);
         Task<List<Storefront>> GetAllStoreAsync();
+        public List<Products> ViewStoreInventory(int p_storeID);
     }
 }

@@ -115,4 +115,9 @@ public class CustomerController : ControllerBase
         }
 
     }
+    [HttpGet("ViewCustomerOrders")]
+    public IActionResult ViewCustomerOrders([FromQuery] int p_CustomerID)
+    {
+        return Ok(_storeBL.ViewCustomerOrders(p_CustomerID));
+    }
 }

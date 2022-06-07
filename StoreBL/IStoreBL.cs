@@ -9,5 +9,6 @@ namespace StoreBL
         Customer SearchCustomerByPhone(double Phone);
         List<Customer> GetAllCustomers();
         Task<List<Customer>> GetAllCustomersAsync();
+        public List<Orders> ViewCustomerOrders(int p_CustomerID);
     }
 }

@@ -42,5 +42,23 @@ namespace StorefrontBL
         {
             return _storefrontRepo.GetAll().First(storefront => storefront.storeName == p_storeName);
         }
+
+        public List<Products> ViewStoreInventory(int p_storeID)
+        {
+            List<Storefront> listOfCurrentStore = _storefrontRepo.GetAll();
+
+            foreach (Storefront item in listOfCurrentStore)
+            {
+                //Condition to return a specific store
+                if (item.storeID == p_storeID)
+                {
+                    return item.Products;
+                }
+            }
+
+            //It will return nothing if the client specify a store that was never in the database
+            return null;
+            
+        }
     }
 }

@@ -52,7 +52,7 @@ namespace StoreDL
                         storeID = reader.GetInt32(0),
                         storeName = reader.GetString(1),
                         storeAddress = reader.GetString(2),
-                        Products = GiveProductsToStorefront(reader.GetInt32(0))
+                        Products = GetProductsFromAStore(reader.GetInt32(0))
                     });
                 }
 
@@ -60,7 +60,7 @@ namespace StoreDL
             }
         }
 
-        private List<Products> GiveProductsToStorefront(int storeID)
+        private List<Products> GetProductsFromAStore(int storeID)
         {
             string SQLquery = @"select a.proId, a.proName, pa.Quantity, a.proPrice from Storefront p
                         inner join inventory pa on p.StoreID = pa.StoreID
@@ -112,7 +112,7 @@ namespace StoreDL
                         storeID = reader.GetInt32(0),
                         storeName = reader.GetString(1),
                         storeAddress = reader.GetString(2),
-                        Products = GiveProductsToStorefront(reader.GetInt32(0))
+                        Products = GetProductsFromAStore(reader.GetInt32(0))
                     });
                 }
                 return listOfStores;

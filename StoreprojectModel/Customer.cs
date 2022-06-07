@@ -59,7 +59,7 @@ namespace StoreprojectModel
                 }
             }
         }
-
+        public List<Orders> Orders { get; set; }
         public List<CustomerOrders> CustomerOrders { get; set; }
         public Customer()
         {
@@ -68,6 +68,7 @@ namespace StoreprojectModel
             Address = "1234 farway";
             Phone = 9197066325;
             CustomerOrders = new List<CustomerOrders>();
+            Orders = new List<Orders>();
         }
 
 

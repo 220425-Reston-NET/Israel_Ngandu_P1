@@ -17,8 +17,8 @@ public class StoreController : ControllerBase
     // =============Dependency injection==========
     private readonly IStorefrontBL _storefrontBL;
     private readonly IinventoryBL _inventoryJoin;
-    private readonly OrderslistBL _orderlist;
-    public StoreController(IStorefrontBL storefrontBL, IinventoryBL inventoryJoin, OrderslistBL orderlist)
+    private readonly IOrdersListBL _orderlist;
+    public StoreController(IStorefrontBL storefrontBL, IinventoryBL inventoryJoin, IOrdersListBL orderlist)
     {
         _storefrontBL = storefrontBL;
         _inventoryJoin = inventoryJoin;
@@ -100,6 +100,7 @@ public class StoreController : ControllerBase
             }
         }
     }
+   
 
     [HttpGet("GetAllInventory")]
     public IActionResult GetAllInventory()
@@ -147,5 +148,11 @@ public class StoreController : ControllerBase
         }
 
     }
-   
+    [HttpGet("ViewStoreInventory")]
+    public IActionResult ViewStoreInventory([FromQuery] int p_storeID)
+    {
+        return Ok(_storefrontBL.ViewStoreInventory(p_storeID));
+    }
+
 }
+   

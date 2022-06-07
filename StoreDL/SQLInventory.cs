@@ -3,12 +3,12 @@ using SStoreprojectModel;
 
 namespace StoreDL
 {
-    public class SQLInventory : IRepository<Inventory>
+    public class SqlInventory : IRepository<Inventory>
     {
         //=================== Dependency Injection ==========================
-        private string _connectionString;
+        private readonly string _connectionString;
 
-        public SQLInventory(string p_connectionString)
+        public SqlInventory(string p_connectionString)
         {
             this._connectionString = p_connectionString;
         }

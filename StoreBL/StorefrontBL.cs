@@ -6,7 +6,7 @@ namespace StorefrontBL
     public class StorelocationBL : IStorefrontBL
     {
         //================== Dependency Injection ====================
-        private IRepository<Storefront> _storefrontRepo;
+        private readonly IRepository<Storefront> _storefrontRepo;
         public StorelocationBL(IRepository<Storefront> p_storefrontRepo)
         {
             _storefrontRepo = p_storefrontRepo;

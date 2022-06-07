@@ -5,7 +5,7 @@ namespace StoreprojectModel
 {
     public class Customer
     {
-        public int _customerID;
+        private int _customerID;
         public int customerID
         {
             get { return _customerID; }
@@ -22,7 +22,7 @@ namespace StoreprojectModel
                 }
             }
         }
-        public string _name;
+        private string ? _name;
         public string Name
         {
             get { return _name; }
@@ -41,7 +41,7 @@ namespace StoreprojectModel
         }
         public string Address { get; set; }
 
-        public double _phone;
+        private double _phone;
         public double Phone
         {
 

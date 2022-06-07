@@ -3,12 +3,12 @@ using StoreprojectModel;
 
 namespace StoreDL
 {
-    public class SQLCustomerRepository : IRepository<Customer>
+    public class SqlCustomerRepository : IRepository<Customer>
     {
 
-        private string _connectionString;
+        private readonly string _connectionString;
 
-        public SQLCustomerRepository(string p_connectionString)
+        public SqlCustomerRepository(string p_connectionString)
         {
             this._connectionString = p_connectionString;
         }

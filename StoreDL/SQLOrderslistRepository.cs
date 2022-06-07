@@ -4,12 +4,12 @@ using StoreprojectModel;
 
 namespace StoreDL
 {
-    public class SQLOrderslistRepository : IRepository<CustomerOrders>
+    public class SqlOrderslistRepository : IRepository<CustomerOrders>
     {
         //=================== Dependency Injection ==========================
-        private string _connectionString;
+        private readonly string _connectionString;
 
-        public SQLOrderslistRepository(string p_connectionString)
+        public SqlOrderslistRepository(string p_connectionString)
         {
             this._connectionString = p_connectionString;
         }

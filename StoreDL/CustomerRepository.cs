@@ -7,7 +7,7 @@ namespace StoreDL
     //This class is responsible for storing and reading our data
     public class CustomerRepository : IRepository<Customer>
     {
-        private string _filepath = "../StoreDL/Data/Storeproject.json";
+        private readonly string _filepath = "../StoreDL/Data/Storeproject.json";
 
         //Purpose of this method is to add a pokemon to our data
         public void Add(Customer c_cus)
@@ -40,7 +40,7 @@ namespace StoreDL
                 //Condition to find the same pokemon
                 if (CustomerObj.Name == p_resource.Name)
                 {
-
+                    
                 }
             }
 

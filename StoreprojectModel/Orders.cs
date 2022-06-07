@@ -5,7 +5,7 @@ namespace StoreprojectModel
     public class Orders
     {
 
-        public int _orderID;
+        private int _orderID;
         public int orderID
         {
             get { return _orderID; }

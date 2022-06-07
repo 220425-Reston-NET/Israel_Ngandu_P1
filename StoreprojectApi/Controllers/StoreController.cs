@@ -15,9 +15,9 @@ namespace StoreprojectApi.Controllers;
 public class StoreController : ControllerBase
 {
     // =============Dependency injection==========
-    private IStorefrontBL _storefrontBL;
-    private IinventoryBL _inventoryJoin;
-    private OrderslistBL _orderlist;
+    private readonly IStorefrontBL _storefrontBL;
+    private readonly IinventoryBL _inventoryJoin;
+    private readonly OrderslistBL _orderlist;
     public StoreController(IStorefrontBL storefrontBL, IinventoryBL inventoryJoin, OrderslistBL orderlist)
     {
         _storefrontBL = storefrontBL;

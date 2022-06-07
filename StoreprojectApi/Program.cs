@@ -14,10 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 Log.Logger = new LoggerConfiguration()
     .WriteTo.File("./logs/user.txt")
     .CreateLogger();
-// var Configuration = new ConfigurationBuilder()
-//     .SetBasePath(Directory.GetCurrentDirectory())
-//     .AddJsonFile("appsettings.json")
-//     .Build();
+
 
 // Add services to the container.
 
@@ -29,14 +26,14 @@ builder.Services.AddSwaggerGen();
 
 
 
-builder.Services.AddScoped<IRepository<Customer>, SQLCustomerRepository>(repo => new SQLCustomerRepository(Environment.GetEnvironmentVariable("Connection_String")));
+builder.Services.AddScoped<IRepository<Customer>, SqlCustomerRepository>(repo => new SqlCustomerRepository(Environment.GetEnvironmentVariable("Connection_String")));
 builder.Services.AddScoped<IStoreBL, StoreprojectBL>();
-builder.Services.AddScoped<IRepository<Storefront>, SQLStoreRepository>(repo => new SQLStoreRepository(Environment.GetEnvironmentVariable("Connection_String")));
+builder.Services.AddScoped<IRepository<Storefront>, SqlStoreRepository>(repo => new SqlStoreRepository(Environment.GetEnvironmentVariable("Connection_String")));
 builder.Services.AddScoped<IStorefrontBL, StorelocationBL>();
-builder.Services.AddScoped<IRepository<Inventory>, SQLInventory>(repo => new SQLInventory(Environment.GetEnvironmentVariable("Connection_String")));
+builder.Services.AddScoped<IRepository<Inventory>, SqlInventory>(repo => new SqlInventory(Environment.GetEnvironmentVariable("Connection_String")));
 builder.Services.AddScoped<IinventoryBL, InventoryjoinBL>();
-builder.Services.AddScoped<IRepository<Orders>, SQLOrdersRepository>(repo => new SQLOrdersRepository(Environment.GetEnvironmentVariable("Connection_String")));
-builder.Services.AddScoped<IRepository<CustomerOrders>, SQLOrderslistRepository>(repo => new SQLOrderslistRepository(Environment.GetEnvironmentVariable("Connection_String")));
+builder.Services.AddScoped<IRepository<Orders>, SqlOrdersRepository>(repo => new SqlOrdersRepository(Environment.GetEnvironmentVariable("Connection_String")));
+builder.Services.AddScoped<IRepository<CustomerOrders>, SqlOrderslistRepository>(repo => new SqlOrderslistRepository(Environment.GetEnvironmentVariable("Connection_String")));
 builder.Services.AddScoped<IOrdersListBL, OrderslistBL>();
 
 

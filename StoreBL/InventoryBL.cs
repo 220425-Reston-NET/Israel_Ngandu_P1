@@ -7,7 +7,7 @@ namespace StoreBL
     public class InventoryjoinBL : IinventoryBL
     {
         //========================================
-        private IRepository<Inventory> _inventoryRepo;
+        private readonly IRepository<Inventory> _inventoryRepo;
         public InventoryjoinBL(IRepository<Inventory> p_inventoryRepo)
         {
             _inventoryRepo = p_inventoryRepo;

@@ -8,7 +8,7 @@ namespace StoreBL
     public class CustomerOrderBL : ICustomerOrderBL
     {
         //========================================
-        private IRepository<CustomerOrders> _cusorderRepo;
+        private readonly IRepository<CustomerOrders>  _cusorderRepo;
         public CustomerOrderBL(IRepository<CustomerOrders> p_cusorderRepo)
         {
             _cusorderRepo = p_cusorderRepo;

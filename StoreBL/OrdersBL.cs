@@ -6,8 +6,8 @@ namespace OrdersBL
     public class OrderslistBL : IOrdersListBL
     {
         //====Dependency Injection====
-        private IRepository<Orders> _orderRepo;
-        private IRepository<CustomerOrders> _cusorderRepo;
+        private readonly IRepository<Orders> _orderRepo;
+        private readonly IRepository<CustomerOrders> _cusorderRepo;
         public OrderslistBL(IRepository<Orders> p_orderRepo, IRepository<CustomerOrders> P_cusorderRepo)
         {
             _orderRepo = p_orderRepo;

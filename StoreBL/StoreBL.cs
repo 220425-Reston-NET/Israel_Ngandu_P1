@@ -6,7 +6,7 @@ namespace StoreBL
     public class StoreprojectBL : IStoreBL
     {
         //================== Dependency Injection ====================
-        private IRepository<Customer> storeRepo;
+        private readonly IRepository<Customer> storeRepo;
         public StoreprojectBL(IRepository<Customer> p_storeRepo)
         {
             storeRepo = p_storeRepo;
@@ -26,14 +26,14 @@ namespace StoreBL
         
 
 
-        public Customer SearchCustomerByName(string p_name)
+        public Customer SearchCustomerByName(string name)
         {
-            return storeRepo.GetAll().First(store => store.Name == p_name);
+            return storeRepo.GetAll().First(store => store.Name == name);
         }
 
-        public Customer SearchCustomerByPhone(double p_Phone)
+        public Customer SearchCustomerByPhone(double Phone)
         {
-            return storeRepo.GetAll().First(store => store.Phone == p_Phone);
+            return storeRepo.GetAll().First(store => store.Phone == Phone);
         }
 
         void IStoreBL.AddCustomer(Customer c_cus)

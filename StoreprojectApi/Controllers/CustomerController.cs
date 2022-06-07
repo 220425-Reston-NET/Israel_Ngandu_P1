@@ -9,7 +9,8 @@ namespace StoreprojectApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class CustomerController : ControllerBase{
+public class CustomerController : ControllerBase
+{
     // =============Dependency injection==========
     private IStoreBL _storeBL;
     private IOrdersListBL _orderlist;
@@ -17,19 +18,20 @@ public class CustomerController : ControllerBase{
     {
         _storeBL = p_storeBL;
         _orderlist = p_orderlist;
-        }
+    }
 
     // ===========================================
-    
+
     [HttpGet("GetAllCustomers")]
     public async Task<IActionResult> GetAllCustomers()
     {
-        try{
+        try
+        {
             Log.Warning("Getting all customer");
-        List<Customer> listofCurrentCustomer = await _storeBL.GetAllCustomersAsync();
-        return Ok(listofCurrentCustomer);
+            List<Customer> listofCurrentCustomer = await _storeBL.GetAllCustomersAsync();
+            return Ok(listofCurrentCustomer);
         }
-        catch(SqlException) 
+        catch (SqlException)
         {
             Log.Warning("Exception found");
             return NotFound("No Customer was found or exists.");
@@ -37,7 +39,7 @@ public class CustomerController : ControllerBase{
     }
 
     [HttpPost("AddCustomer")]
-    public IActionResult AddCustomer([FromBody]Customer c_cus)
+    public IActionResult AddCustomer([FromBody] Customer c_cus)
     {
         try
         {
@@ -50,7 +52,7 @@ public class CustomerController : ControllerBase{
             Log.Warning("Exception found");
             return Conflict();
         }
-    
+
     }
     [HttpGet("SearchCustomerByName")]
     public IActionResult SearchCustomerByName([FromQuery] string customerName)

@@ -22,7 +22,7 @@ namespace StoreprojectModel
                 }
             }
         }
-        private string ? _name;
+        private string _name;
         public string Name
         {
             get { return _name; }

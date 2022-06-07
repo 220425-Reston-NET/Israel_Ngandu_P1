@@ -34,16 +34,6 @@ namespace StoreDL
             // Current information from the database
             List<Customer> listOfCustomer = GetAll();
 
-            //Finds the matching customers object in the database
-            foreach (Customer CustomerObj in listOfCustomer)
-            {
-                //Condition to find the same pokemon
-                if (CustomerObj.Name == p_resource.Name)
-                {
-                    
-                }
-            }
-
             //Saves this information to the database
             string jsonString = JsonSerializer.Serialize(listOfCustomer, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(_filepath, jsonString);
